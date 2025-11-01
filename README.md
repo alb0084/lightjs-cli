@@ -1,4 +1,4 @@
-# ⚡ LightJS
+# ⚡ LightJS - CLI
 
 A lightweight **C++ runtime** for building cross-platform desktop apps with modern web frontends.  
 Inspired by **Electron**, powered by **libwebview**, built for **performance and modularity**.
