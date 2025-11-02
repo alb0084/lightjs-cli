@@ -1,2 +1,4 @@
 build/
+# Ignora build e binari
+light.exe
 third_party/
