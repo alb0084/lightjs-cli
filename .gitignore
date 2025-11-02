@@ -2,3 +2,5 @@ build/
 # Ignora build e binari
 light.exe
 third_party/
+CMakeLists.txt
+lightJS-CLI_Portable_Version.zip
