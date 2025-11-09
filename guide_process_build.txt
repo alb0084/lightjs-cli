@@ -1,0 +1,90 @@
+⚙️ LightJS – Procedura Build + Installer
+📁 Struttura corretta progetto
+LIGHTJS-INSTALLER/
+│
+├─ CMakeLists.txt              ← quello che hai (con CPack + NSIS)
+├─ light.exe                   ← la CLI già compilata
+├─ third_party/                ← dipendenze (es. webview/)
+├─ README.md
+└─ build/                      ← verrà rigenerata
+
+🧱 1. PULIZIA PRE-BUILD
+
+Apri PowerShell o Git Bash nella cartella LIGHTJS-INSTALLER
+e lancia:
+
+rm -rf build
+mkdir build
+cd build
+
+🏗️ 2. CONFIGURAZIONE CMAKE
+
+Esegui la configurazione del progetto:
+
+cmake -G "Visual Studio 17 2022" -A x64 -DCMAKE_BUILD_TYPE=Release ..
+
+
+📌 Cosa fa:
+
+prepara la build per Windows 64-bit
+
+genera i file .sln e .vcxproj per MSBuild
+
+legge le impostazioni del tuo CMakeLists.txt
+
+non compila ancora
+
+🔨 3. COMPILAZIONE
+
+Costruisci i target necessari (incluso quello per CPack):
+
+cmake --build . --config Release
+
+
+📌 Cosa fa:
+
+esegue la build del progetto
+
+prepara i file per l’installer (senza ancora creare il .exe)
+
+📦 4. CREAZIONE INSTALLER
+
+Genera il file .exe dell’installer con CPack:
+
+cpack -C Release
+
+
+📌 Cosa fa:
+
+comprime light.exe e third_party/
+
+usa NSIS (makensis.exe) per creare l’installer finale
+
+📍 5. DOVE TROVARLO
+
+Dopo il comando sopra, troverai il tuo installer in uno di questi percorsi:
+
+build/LightJS-1.0.0-win64.exe
+
+
+oppure:
+
+build/_CPack_Packages/win64/NSIS/LightJS-1.0.0-win64.exe
+
+🚀 6. TEST INSTALLER
+
+Per provarlo subito:
+
+start build/LightJS-1.0.0-win64.exe
+
+
+oppure doppio click sul file.
+
+🧹 7. (Facoltativo) Aggiornamento versione
+
+Quando vuoi creare una nuova release, apri il tuo CMakeLists.txt e aggiorna:
+
+set(CPACK_PACKAGE_VERSION "1.0.1")
+
+
+Poi ripeti i passaggi dal punto 1.

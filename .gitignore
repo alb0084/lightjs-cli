@@ -1,6 +1,25 @@
-build/
-# Ignora build e binari
+# Build artifacts and executables
+build/*
+*.exe
+!light.exe
 light.exe
-third_party/
+*.tmp
+
+# Dependencies
+third_party*
+
+# Archives and old versions
+*.zip.old
+*v1.0.0*
+lightJS-CLI-portable-v1.1.0.zip
+
+# Logs
+*.log
+
+# Temporary and backup files
+*.bak
+~*
+
+# Build configuration and scripts
+build-release.sh
 CMakeLists.txt
-lightJS-CLI_Portable_Version.zip
